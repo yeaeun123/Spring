@@ -14,13 +14,13 @@
 	</welcome-file-list>
 
 	<servlet>
-		<servlet-name>myportal</servlet-name>
+		<servlet-name>spring</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 	</servlet>
 
 
 	<servlet-mapping>
-		<servlet-name>myportal</servlet-name>
+		<servlet-name>spring</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
@@ -51,5 +51,11 @@
 			<param-value>true</param-value>
 		</init-param>
 	</filter>
+
+	<!-- 공통 에러 페이지: Spring 앱 바깥에서 일어난 예외 -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/views/errors/error.404.jsp</location>
+	</error-page>
 
 </web-app>

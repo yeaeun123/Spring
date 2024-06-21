@@ -32,15 +32,15 @@ public class MainController {
 //		return "Exception : " + e.getMessage();
 //	}
 	
-	@ExceptionHandler(MainControllerException.class)
-	public String handleControllerException(MainControllerException e, Model model) {
-		
-		model.addAttribute("name", e.getClass().getSimpleName());
-		model.addAttribute("message", e.getMessage());
-		
-		return "errors/exception";
-		
-	}
+//	@ExceptionHandler(MainControllerException.class)
+//	public String handleControllerException(MainControllerException e, Model model) {
+//		
+//		model.addAttribute("name", e.getClass().getSimpleName());
+//		model.addAttribute("message", e.getMessage());
+//		
+//		return "errors/exception";
+//		
+//	}
 	
 	
 	

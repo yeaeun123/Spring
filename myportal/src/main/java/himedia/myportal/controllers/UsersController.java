@@ -1,5 +1,8 @@
 package himedia.myportal.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import himedia.myportal.repositories.vo.UserVo;
 import himedia.myportal.services.UserService;
@@ -91,5 +95,21 @@ public class UsersController {
 		session.invalidate();
 		
 		return "redirect:/";
+	}
+	
+	// 중복 이메일 체크(API) -> 응답을 json으로
+	@ResponseBody	// -> MessageConverter 사용
+	@RequestMapping("/checkEmail")
+	public Object checkEmail(@RequestParam(value="email", 
+				required=true, defaultValue="") String email) {
+		UserVo vo = userService.getUser(email);
+		boolean exists = vo != null ? true: false;
+		
+		System.out.println("Controller UserVo:" + vo);
+		Map<String, Object> json = new HashMap<>();
+		json.put("result", "success");
+		json.put("exists", exists);
+		
+		return json;
 	}
 }

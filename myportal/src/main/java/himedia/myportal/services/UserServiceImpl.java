@@ -17,11 +17,13 @@ public class UserServiceImpl implements UserService{
 		insertedCount = userDao.insert(vo);
 		return insertedCount == 1 ;
 	}
-
+	
+	// email중복체크
 	@Override
 	public UserVo getUser(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		UserVo userVo = userDao.selectUser(email);
+		System.out.println("Service UserVo:" + userVo);
+		return userVo;
 	}
 
 	// 로그인

@@ -1,7 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="true" %>    
+<%@ page session="true" %>   
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Homepage</title>
+<link type="text/css" rel="stylesheet" href="<c:url value='/css/home.css' />"/>
+</head>
+<body>
+  <div id="container">
+  
 	<div id="header">
 		<c:if test="${not empty errorMsg }" >
 			<h5>${errorMsg }</h5>
@@ -28,6 +37,10 @@
       </c:otherwise>
       </c:choose>
     </div> <!-- /header -->
+  
+     </div>
+</body>
+</html>
     <!-- h3>Params</h3>
       <ul>
       	<li>param1 : ${param.param1}</li>

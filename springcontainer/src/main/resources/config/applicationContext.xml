@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="
+    http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <!-- bean 설정 -->
+    <bean id="user" name="member" class="himedia.springcontainer.User" />
+    
+    <bean id="user3" class="himedia.springcontainer.User" />
+    
+    <!-- 생성자 매개변수 전달 -->
+    <bean id="user4" class="himedia.springcontainer.User">
+    	<constructor-arg type="java.lang.Long" index="0" value="1" />
+    	<constructor-arg type="java.lang.String" index="1" value="짱구" />
+    </bean>
+    
+    <!-- Setter를 이용한 필드 설정 -->
+    <bean id="user5" class="himedia.springcontainer.User">
+    	<property name="no" value="2" />
+    	<property name="name" value="맹구" />
+    </bean>
+    
+    <!-- 참조 필드 주입	 -->
+    <!-- 주입될 객체 -->
+    <bean id="friend6" class="himedia.springcontainer.Friend">
+    	<property name="name" value="철수" />
+    </bean>
+    <bean id="user6" class="himedia.springcontainer.User">
+    	<property name="no" value="6" />
+    	<property name="name" value="영희" />
+    	
+    	<property name="friend" ref="friend6" />
+    </bean>
+    
+    <!-- 집합 객체 Inject -->
+    <bean id="user7" class="himedia.springcontainer.User">
+    	<constructor-arg type="java.lang.Long" index="0" value="7" />
+    	<constructor-arg type="java.lang.String" index="1" value="짱구" />
+    	
+    	<property name="friend" ref="friend6"/>
+    	<!-- List 객체 주입 -->
+    	<property name="friends">
+    		<list>
+    			<value>철수</value>
+    			<value>유리</value>
+    			<value>맹구</value>
+    		</list>
+    	</property>
+    	<!-- Set 객체 주입 -->
+    	<property name="hobbies">
+    		<set>
+    			<value>축구</value>
+    			<value>게임</value>
+    			<value>독서</value>
+    		</set>
+    	</property>
+    	<!-- Map 객체 주입 -->
+    	<property name="address">
+    		<map>
+    			<entry key="country" value="일본" />
+    			<entry key="city" value="도쿄" />
+    			<entry key="village" value="떡잎마을" />
+    		</map>
+    	</property>
+    </bean>
+</beans>

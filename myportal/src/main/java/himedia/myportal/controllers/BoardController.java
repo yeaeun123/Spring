@@ -19,6 +19,7 @@ import jakarta.servlet.http.HttpSession;
 
 // 게시판은 사용자 기반 서비스
 // - 목록은 로그인과 상관없이 접근 가능
+//- 조회, 작성, 수정등은 로그인 해야 사용가능
 @RequestMapping("/board")
 @Controller
 public class BoardController {

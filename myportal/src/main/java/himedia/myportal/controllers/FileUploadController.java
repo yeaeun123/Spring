@@ -1,8 +1,12 @@
 package himedia.myportal.controllers;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,5 +40,43 @@ public class FileUploadController {
 		
 		return "fileupload/result";
 	}
+	
+	  private static final String UPLOAD_DIRECTORY = "uploads";
+	
+	 @GetMapping("/board/write")
+	    public String showUploadForm() {
+	        return "uploadForm";
+	    }
 
-}
+	    @PostMapping("/board/write")
+	    public String handleFileUpload(@RequestParam("title") String title,
+	                                   @RequestParam("content") String content,
+	                                   @RequestParam("file") MultipartFile file1,
+	                                   Model model) {
+	        if (file1.isEmpty()) {
+	            model.addAttribute("message", "파일이 비어 있습니다.");
+	            return "result";
+	        }
+
+	        try {
+	            // 파일 저장
+	            String uploadPath = new File(UPLOAD_DIRECTORY).getAbsolutePath();
+	            File uploadDir = new File(uploadPath);
+	            if (!uploadDir.exists()) {
+	                uploadDir.mkdirs();
+	            }
+	            File uploadFile = new File(uploadPath + File.separator + file1.getOriginalFilename());
+	            file1.transferTo(uploadFile);
+
+	        
+
+	            model.addAttribute("message", "파일 업로드 성공");
+	        } catch (IOException e) {
+	            model.addAttribute("message", "파일 업로드 실패: " + e.getMessage());
+	        }
+
+	        return "result";
+	    }
+	}
+
+

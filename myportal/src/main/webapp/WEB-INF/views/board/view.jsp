@@ -42,6 +42,16 @@
 					${vo.content }
 				</div>
 			</td>
+		
+		</tr>
+			<tr>
+			<td>파일</td>
+			<td>
+				<c:if test="${not empty imageFilename}">
+					<img src="<c:url value='/uploads/${imageFilename}' />" alt="업로드된 이미지" />
+				</c:if>
+				<p>${message}</p>
+			</td>
 		</tr>
 		<tr>
 			<td colspan="2">

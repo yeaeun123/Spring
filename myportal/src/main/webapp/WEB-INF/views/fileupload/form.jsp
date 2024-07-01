@@ -9,12 +9,14 @@
 </head>
 <body>
 	<h1>파일 업로드</h1>
-	
-	<form action="post" action="<c:url value="/fileupload/upload" />"
-		enctype="multipart/form-data">
-		<label>File</label>
-		<input type="file" name="file1"	/>
-		<input type="submit" value="upload" />
+		
+	<form method="post" 
+			action="<c:url value="/fileupload/upload" />"
+			enctype="multipart/form-data">
+			<label>File</label>
+			<input type="file" name="file1" />
+			<input type="submit" value="upload" />
+		
 	</form>
 	
 

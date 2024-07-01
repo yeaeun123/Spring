@@ -8,7 +8,7 @@
 <title>파일 업로드</title>
 </head>
 <body>
-	<img src="/upload-images/${imageFilename }" />
+	<img src="<c:url value="/upload-images/${imageFilename }" />" />
 	
 
 </body>

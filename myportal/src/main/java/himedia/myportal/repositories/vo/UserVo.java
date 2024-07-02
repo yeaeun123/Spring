@@ -2,11 +2,28 @@ package himedia.myportal.repositories.vo;
 
 import java.util.Date;
 
+import org.hibernate.validator.constraints.Length;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
 public class UserVo {
-	private Long no;
+	private Long no;	//pk
+	
+	@NotEmpty
+	@Length(min=2, max=8)	//이름 길이가 2~8자 사이
 	private String name;
+	
+	@NotEmpty
+	@Email
 	private String email;
+	
+	@NotEmpty
+	@Length(min=4, max=20) //최소 4자리~최대 20자리
 	private String password;
+	
+	@NotNull
 	private String gender;
 	private Date joinDate;	//java.util.Date
 

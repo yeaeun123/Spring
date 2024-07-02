@@ -43,8 +43,5 @@ public class BoardServiceImpl implements BoardService {
 		int deletedCount = boardDao.delete(no, userNo);
 		return deletedCount == 1;
 	}
-	
-	
-	
 
 }

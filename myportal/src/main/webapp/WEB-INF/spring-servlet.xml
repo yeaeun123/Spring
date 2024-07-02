@@ -13,7 +13,7 @@
            http://www.springframework.org/schema/aop 
            http://www.springframework.org/schema/aop/spring-aop.xsd">           
     <context:annotation-config />
-    <context:component-scan base-package="himedia.myportal.controllers">
+    <context:component-scan base-package="himedia.myportal.controllers, learnbyteaching.todos.controllers">
     	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
     	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository" />

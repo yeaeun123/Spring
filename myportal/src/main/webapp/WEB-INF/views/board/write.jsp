@@ -46,8 +46,7 @@
 			<tr>
 				<td colspan="2">
 				<label>File</label>
-				<input type="file" name="file" />
-				<input type="submit" value="upload" />
+				<input type="file" name="imageFile">
 				</td>
 			</tr>
 			<tr>

@@ -47,10 +47,10 @@
 			<tr>
 			<td>파일</td>
 			<td>
-				<c:if test="${not empty imageFilename}">
-					<img src="<c:url value='/uploads/${imageFilename}' />" alt="업로드된 이미지" />
+		
+				<c:if test="${not empty vo.imageName}">
+					<img src="<c:url value='/upload-images/${vo.imageName}' />"  width="320"/>
 				</c:if>
-				<p>${message}</p>
 			</td>
 		</tr>
 		<tr>

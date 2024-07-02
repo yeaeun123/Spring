@@ -31,7 +31,11 @@ public class BoardServiceImpl implements BoardService {
 		int insertedCount = boardDao.insert(boardVo);
 		return insertedCount == 1;
 	}
-
+	@Override
+	public boolean writeImage(BoardVo boardVo) {
+		int insertedCount = boardDao.insertImage(boardVo);
+		return insertedCount == 1;
+	}
 	@Override
 	public boolean update(BoardVo boardVo) {
 		int updatedCount = boardDao.update(boardVo);

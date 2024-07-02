@@ -10,4 +10,5 @@ public interface BoardService {
 	public boolean write(BoardVo boardVo);
 	public boolean update(BoardVo boardVo);
 	public boolean delete(Long no, Long userNo);
+	public boolean writeImage(BoardVo boardVo);
 }

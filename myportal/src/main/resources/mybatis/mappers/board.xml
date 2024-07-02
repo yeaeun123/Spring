@@ -14,6 +14,16 @@
 		]]>
 	</insert>
 	
+	<insert id="insertImage" parameterType="BoardVo">
+		<selectKey keyProperty="no" resultType="long" order="BEFORE">
+			SELECT seq_board_pk.nextval FROM dual
+		</selectKey>
+        <![CDATA[
+        INSERT INTO board (no, title, content, hit, reg_date, user_no, image_name)
+        VALUES(#{no}, #{title}, #{content}, 0, sysdate, #{userNo}, #{imageName})
+        ]]>
+	</insert>
+	
 	<!-- 목록 -->
 	<select id="selectAll" resultType="boardVo">
 		SELECT b.no, 
@@ -22,6 +32,7 @@
 				b.hit,
 				b.reg_date as regDate,
 				b.user_no as userNo,
+				b.image_name as imageName,
 				u.name as userName 
 		FROM board b, users u 
 		WHERE b.user_no = u.no 
@@ -36,6 +47,7 @@
 				b.hit,
 				b.reg_date as regDate,
 				b.user_no as userNo,
+				b.image_name as imageName,
 				u.name as userName 
 		FROM board b, users u 
 		WHERE b.user_no = u.no AND 
@@ -52,7 +64,7 @@
 	<!-- 게시물 수정 -->
 	<update id="update" parameterType="boardVo">
 		UPDATE board 
-		SET title=#{title}, content=#{content} 
+		SET title=#{title}, content=#{content}, image_name=#{imageName}  
 		WHERE no=#{no}
 	</update>
 	

@@ -6,10 +6,26 @@
 <head>
 	<title>My Homepage</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	
 </head>
 <body>
+
+  <div id="container">
+  
+    <!-- header include -->
+    <c:import url="/WEB-INF/views/includes/header.jsp">
+    	<c:param name="param1" value="value1" />
+    	<c:param name="param2" value="value2" />
+    </c:import>
+
+	<!-- navigation include -->
+	<c:import url="/WEB-INF/views/includes/navigation.jsp" />
+    
+	<div id="wrapper">
+      <div id="content">
+			<!-- Content 영역 -->
 	<form method="post" action="<c:url value="/board/write" />"   enctype="multipart/form-data">
-		<table border="1" width="640">
+		<table border="1" width="500">
 			<tr>
 				<td colspan="2"><h3>게시판</h3></td>
 			</tr>
@@ -42,6 +58,14 @@
 			</tr>
 		</table>
 	</form>
-			
+	
+	</div>
+	</div>
+	
+	<!-- footer include -->
+	<%@ include file="/WEB-INF/views/includes/footer.jsp" %>
+	
+	
+  </div>
 </body>
 </html>

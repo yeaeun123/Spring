@@ -23,7 +23,7 @@ import learnbyteaching.todos.repositories.vo.TodoItem;
 
 @RequestMapping("/api/todos")
 @RestController
-@CrossOrigin(origins = "http://localhost", 
+@CrossOrigin(origins = "*", 
 	methods= {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE},
 	allowedHeaders= {"Content-Type", "Authorization"})
 public class TodoApiController {
@@ -64,7 +64,7 @@ public class TodoApiController {
 
     // 기존 TODO 항목 수정
     @PutMapping("/{id}")
-    public ResponseEntity<TodoItem> updateTodo(@PathVariable Long id,
+    public ResponseEntity<TodoItem> updateTodo(@PathVariable("id") Long id,
                                                @RequestBody TodoItem updatedTodo) {
         return todoRepository.findById(id)
                 .map(todo -> {
@@ -78,7 +78,7 @@ public class TodoApiController {
 
     // TODO 항목 삭제
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTodo(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTodo(@PathVariable("id") Long id) {
         Optional<TodoItem> existingTodo = todoRepository.findById(id);
         if (!existingTodo.isPresent()) {
             return ResponseEntity.notFound().build();
